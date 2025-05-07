@@ -1,10 +1,16 @@
-const express = require('express');
-const http = require('http');
-const cors = require('cors');
-const { Server } = require('socket.io');
+// server.mjs
+import express from 'express';
+import http from 'http';
+import cors from 'cors';
+import { Server } from 'socket.io';
 
 const app = express();
 app.use(cors());
+
+app.get('/', (req, res) => {
+  res.send('チャットサーバーは起動しています');
+});
+
 
 const server = http.createServer(app);
 const io = new Server(server, {
